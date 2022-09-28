@@ -10,7 +10,7 @@ public interface UserService {
 
     UserOutputDTO createUser(UserInputDTO userInputDTO) throws Exception;
     UserOutputDTO updateUser(UserInputDTO userInputDTO, Integer id) throws Exception;
-    UserOutputDTO getUser(Integer id, String tipo) throws Exception;
+    UserOutputDTO getUser(Integer id) throws Exception;
     void deleteUser(Integer id);
 
     List<User> findByName(String name);

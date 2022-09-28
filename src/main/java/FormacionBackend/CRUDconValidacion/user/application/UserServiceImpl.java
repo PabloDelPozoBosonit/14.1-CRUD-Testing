@@ -3,15 +3,9 @@ package FormacionBackend.CRUDconValidacion.user.application;
 
 import FormacionBackend.CRUDconValidacion.exceptions.EntityNotFoundException;
 import FormacionBackend.CRUDconValidacion.exceptions.UnprocessableEntityException;
-import FormacionBackend.CRUDconValidacion.student.domain.Student;
-import FormacionBackend.CRUDconValidacion.student.infraestructure.repository.StudentRepository;
-import FormacionBackend.CRUDconValidacion.teacher.domain.Teacher;
-import FormacionBackend.CRUDconValidacion.teacher.infraestructure.repository.TeacherRepository;
 import FormacionBackend.CRUDconValidacion.user.domain.User;
 import FormacionBackend.CRUDconValidacion.user.infraestructure.dtos.UserInputDTO;
 import FormacionBackend.CRUDconValidacion.user.infraestructure.dtos.UserOutputDTO;
-import FormacionBackend.CRUDconValidacion.user.infraestructure.dtos.UserStudentOutputDTO;
-import FormacionBackend.CRUDconValidacion.user.infraestructure.dtos.UserTeacherOutputDTO;
 import FormacionBackend.CRUDconValidacion.user.infraestructure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,12 +21,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private TeacherRepository teacherRepository;
-
-    @Autowired
-    private StudentRepository studentRepository;
 
 
     /*
@@ -97,34 +85,10 @@ public class UserServiceImpl implements UserService {
      * lo retornamos
      * */
     @Override
-    public UserOutputDTO getUser(Integer id, String tipo) throws EntityNotFoundException {
+    public UserOutputDTO getUser(Integer id) throws EntityNotFoundException {
 
         //Obtengo el usuario por si id
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found",404));
-        //Obtengo el teacher asociado buscandolo por el id del usuario
-        Teacher teacher = teacherRepository.findByIdUser(id);
-        //Obtengo el student asociado buscandolo por el id del usuario
-        Student student = studentRepository.findByIdUser(id);
-
-
-        //Si el tipo es simple solo muestra la entidad usuario
-        if(tipo.equals("simple")) {
-            return new UserOutputDTO(user);
-        }
-        //Si es full muestra su entidad teacher|student asociada
-        else if (tipo.equals("full")) {
-
-            if(teacher != null) {
-                System.out.println("Es teacher");
-                return new UserTeacherOutputDTO(user, teacher);
-            }
-
-            else if (student  != null){
-                System.out.println("Es student");
-                return new UserStudentOutputDTO(user, student);
-            }
-        }
-
 
         return new UserOutputDTO(user);
     }

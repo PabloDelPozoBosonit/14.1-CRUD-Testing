@@ -1,14 +1,16 @@
 package FormacionBackend.CRUDconValidacion.user.infraestructure.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 public class UserInputDTO {
 
 
-    private Integer idUser;
+    //private Integer idUser;
     private String user;
     private int age;
     private String password;

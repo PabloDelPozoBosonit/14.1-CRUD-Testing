@@ -2,12 +2,12 @@ package FormacionBackend.CRUDconValidacion.user.domain;
 
 
 import FormacionBackend.CRUDconValidacion.user.infraestructure.dtos.UserInputDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-
 
 
 @Getter
@@ -37,6 +37,23 @@ public class User {
     private Date createdDate;
     private String imagenUrl;
     private Date terminationDate;
+
+    public User(String user,int age,String password,String name, String surname, String companyEmail, String personalEmail, String city, boolean active, Date createdDate, String imagenUrl, Date terminationDate ) {
+
+        this.user = user;
+        this.age = age;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.companyEmail = companyEmail;
+        this.personalEmail = personalEmail;
+        this.city = city;
+        this.active = active;
+        this.createdDate = createdDate;
+        this.imagenUrl = imagenUrl;
+        this.terminationDate = terminationDate;
+    }
+    public User() {}
 
 
     public  void createUser(UserInputDTO userInputDTO) {
