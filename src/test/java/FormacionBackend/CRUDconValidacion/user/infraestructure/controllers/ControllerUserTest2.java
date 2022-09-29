@@ -51,7 +51,7 @@ public class ControllerUserTest2 {
     @BeforeAll
     public  void starting()
     {
-        //necesaria para crear UserInputDTO
+        //necesaria para crear User
         Date date = new Date();
         //Creo usuario
         User user = new User("Pablo", 26, "12345", "Pablo", "del Pozo", "pablo@bosonit.com", "pablo@mail.com", "Haro", true, date, "", date);
