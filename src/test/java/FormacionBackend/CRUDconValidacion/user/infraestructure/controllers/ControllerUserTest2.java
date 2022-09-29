@@ -84,9 +84,8 @@ public class ControllerUserTest2 {
 
     @Test
     @DisplayName("Running app wihtout mockito")
-    void contextLoads() throws URISyntaxException {
-
-        RequestEntity<Void> request= RequestEntity.get(new URI("http://localhost:" + puerto + "/user/obtener/1")) // we create connection URL
+    public void findAll() throws URISyntaxException {
+        RequestEntity<Void> request= RequestEntity.get(new URI("http://localhost:" + puerto + "/user/findAll")) // we create connection URL
                 .accept(MediaType.APPLICATION_JSON).build();
 
         ParameterizedTypeReference<List<User>> myList =
@@ -99,4 +98,5 @@ public class ControllerUserTest2 {
         Assertions.assertEquals(respuesta.get(0).getName(),"Pablo");
 
     }
+
 }
