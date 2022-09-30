@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOpt = userRepository.findById(id);
 
         if(userOpt.isEmpty())
-            throw new EntityNotFoundException("The userdoes no exist", 404);
+            throw new EntityNotFoundException("The user does no exist", 404);
 
         if ((userInputDTO.getUser() == null) || (userInputDTO.getUser().equals("")))
             throw new UnprocessableEntityException("User field can not be null", 422);
