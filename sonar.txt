@@ -1,0 +1,1 @@
+mvn clean verify sonar:sonar \-Dsonar.projectKey=Testing-CRUD \-Dsonar.host.url=http://localhost:9000 \-Dsonar.login=sqp_e53bbfa05af43d54b70d3a6d0d2df24cfc468239

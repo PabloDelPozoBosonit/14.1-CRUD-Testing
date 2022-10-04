@@ -7,9 +7,8 @@ import FormacionBackend.CRUDconValidacion.user.infraestructure.dtos.UserOutputDT
 import FormacionBackend.CRUDconValidacion.user.application.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+
 
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class ControllerUser {
     }
 
     //Recibimos los datos a actualizar y el id y se lo pasamos a la capa bde servicio
-    @PutMapping(value = "/actualizar/{id}")
+    @PostMapping(value = "/actualizar/{id}")
     public UserOutputDTO updateUser(@RequestBody UserInputDTO userInputDTO, @PathVariable Integer id) throws Exception {
 
         return usuarioService.updateUser(userInputDTO, id);
